@@ -1,0 +1,38 @@
+str1 = input("请输入：")
+
+a = len(str1)
+#p，q为两个指针判断端点处是否相等
+maxlenth = sum = 0
+isodd = 0
+
+#循环遍历一次字符串，每次以当前字符为中心求其对称长度(偶数)
+for i in range(a-2):
+    p=i+1;q=i+2
+    while p>=0 and q<a:
+        if str1[p] == str1[q]:
+            p -= 1; q += 1
+            sum += 2 
+        else:    
+            break
+    if sum > maxlenth:
+        maxlenth = sum
+    sum = 0
+
+#奇数
+for i in range(a-2):
+    y=i+2;x=i
+    while x>=0 and y<a:
+        if str1[y] == str1[x]:
+            x -= 1; y += 1
+            sum += 2 
+        else:    
+            break
+        
+    sum += 1
+    
+    if sum > maxlenth:
+        maxlenth = sum
+    sum = 0        
+        
+print("最长对称子字符串长度为：",maxlenth)
+        
